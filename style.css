@@ -1,0 +1,259 @@
+body {
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    height: 40px;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 26px;
+    background-color: rgb(224, 136, 3);
+}
+
+.header img {
+    height: 30px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.headline {
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    display: flex;
+}
+
+.menu-name img {
+    height: 30px;
+    padding-left: 15px;
+}
+
+.menu-name {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.ratings {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.ratings img {
+    height: 80px;
+}
+
+.ratings span {
+    padding-left: 20px;
+}
+
+.menu-info-box {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.menu-info-box span {
+    padding-left: 5px;
+}
+
+.menu-info-box img {
+    width: 20px;
+    height: 20px;
+    padding-left: 20px;
+}
+
+.menu-overview {
+    display: flex;
+    position: sticky;
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    gap: 16px;
+}
+
+.menu-overview a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    padding-right: 15px;
+}
+
+.menu-overview a:hover {
+    transition: all 125ms ease-in-out;
+    color: rgb(224, 136, 3);
+}
+
+.title-pic {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.title-logo {
+    display: flex;
+    position: absolute;
+    height: 90px;
+    object-fit: contain;
+    top: 210px;
+    left: 80px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+}
+
+.main-left {
+    width: 75%;
+}
+
+.food-box {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.shopping-card {
+    width: 25%;
+    position: sticky;
+    top: 0;
+    right: 0;
+    height: 100svh;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.food-headline {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-right: 30px;
+    min-width: 80%;
+}
+
+.food-pic {
+    height: 140px;
+    border-radius: 10px;
+    margin: 20px 0;
+    object-fit: cover;
+}
+
+h3 {
+    font-size: 20px;
+    padding-left: 30px;
+    padding-top: 20px;
+    margin: 0;
+}
+
+.description {
+    font-size: 14px;
+    padding-left: 30px;
+    padding-top: 5px;
+    margin: 0;
+}
+
+.menu-title-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.menu-box {
+    margin: 20px;
+}
+
+.menu-card {
+    min-height: 140px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.menu-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.plus {
+    font-size: 40px;
+    border-radius: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    width: 20px;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus:hover {
+    transition: all 125ms ease-in-out;
+    background-color: rgb(224, 136, 3);
+    color: white;
+    border: 1px solid rgb(224, 136, 3);
+}
+
+ul {
+    margin: 0;
+}
+
+ul li {
+    font-size: 15px;
+    padding-bottom: 5px;
+}
+
+.price {
+    margin-left: 20px;
+}
+
+.empty-basket {
+    text-align: center;
+    display: contents;
+}
+
+.basket-img {
+    margin: 20px;
+    width: 50px;
+}
+
+.basket-menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.basket-menu-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 20px;
+}
+
+.quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzablitz</title>
+    <link rel="icon" href="img/logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="json.js"></script>
+</head>
+
+<body onload="render(), renderBasket()">
+
+    <header class="header">
+        <span class="headline"><img src="img/logo.jpg">
+            Pizzablitz</span>
+
+        <span class="headline">Speisekarte</span>
+
+        <div><img src="img/deutschland.png">
+            <img src="img/menu-burger.png">
+        </div>
+    </header>
+    <div class="main">
+        <div class="main-left">
+            <img class="title-pic" src="img/titlepic.jpg">
+            <img class="title-logo" src="img/logo.jpg">
+            <div>
+                <div class="menu-name">
+                    <span> Pizzablitz Lieferservice</span>
+                    <div><img src="img/die-info.png">
+                        <img src="img/herz.png">
+                    </div>
+                </div>
+                <div class="ratings">
+                    <img src="img/bewertung.png">
+                    <span>536 Bewertungen</span>
+                </div>
+                <div class="menu-info-box">
+                    <img src="img/uhr.png">
+                    <span>30-60 min</span>
+                    <img src="img/lieferung.png">
+                    <span>5 €</span>
+                    <img src="img/tasche.png">
+                    <span>20 € </span>
+                </div>
+            </div>
+
+            <div class="menu-overview">
+                <a href="#Vorspeisen"> Vorspeisen</a>
+                <a href="#Salate">Salate</a>
+                <a href="#Pasta">Pasta</a>
+                <a href="#Pizza">Pizza</a>
+            </div>
+
+            <div id="food-box">
+               
+            </div>
+                  
+        </div>
+        <div class="shopping-card">
+            <h2>Warenkorb</h2>
+            <div id="basket"  class="empty-basket">
+            
+            </div>
+            
+            <div class="price-section" id="price-section">
+
+            </div>  
+               
+        </div>
+    </div>
+</body>
+
+</html>
