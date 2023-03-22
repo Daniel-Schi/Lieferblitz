@@ -2,6 +2,8 @@ let basketFood = [];
 let basketPrice = [];
 let basketAmount = [];
 
+loadArrays();
+
 
 function render() {
     let content = document.getElementById('food-box');
@@ -12,31 +14,13 @@ function render() {
         if (food.categoryName == 'category') {
             content.innerHTML += /*html*/`
                 <div class="food-headline">
-                    <img class="food-pic" src=${food.picture}></div>
-                    <h3 id="${food.categories}">${food.categories}</h3>
-                    <p class="description">${food.description}</p>
-                `;
+                <h3 id="${food.categories}">${food.categories}</h3>
+                <p class="description">${food.description}</p>
+                <img class="food-pic" src=${food.picture}></div>`;                
         } else {
             content.innerHTML += foodContentHTML(food);
         }
     }
-}
-
-function foodContentHTML(food) {
-    return /*html*/`
-        <div class="menu-box">
-            <div class="menu-card">
-                <div class="menu-title-head">
-                    <p class="menu-title">${food.item}</p>
-                    <div class="plus" onclick="addToBasktet('${food.amount}', '${food.item}', '${food.price}')">+</div>
-                </div>
-                <ul>
-                    <li>${food.menuContent}</li>
-                </ul>
-                <p class="price">${food.price} €</p>
-            </div>
-        </div>
-    `
 }
 
 
@@ -67,7 +51,9 @@ function addToBasktet(amount, item, price) {
         basketAmount[index]++;
     }
     renderBasket();
+    saveArrays();
 }
+
 
 function updateBasketPrice() {
     let content = document.getElementById('price-section');
@@ -82,15 +68,77 @@ function updateBasketPrice() {
     let minPrice = 20 - sum;
     content.innerHTML += priceSectionHtml(minPrice, sum, finalSum);
 
-    if(sum > 20) {
+    if (sum > 20) {
         document.getElementById('remove').classList.add('d-none');
     } else {
         document.getElementById('remove').classList.remove('d-none');
     }
-    
 }
 
-function emptyBasketHtml(i) {
+
+function decreaseAmount(i) {
+    let content = document.getElementById('price-section');
+    content.innerHTML = '';
+
+    if(basketAmount[i] > 1) {
+       basketAmount[i]--;
+    } else {
+        basketFood.splice(i, 1);
+        basketPrice.splice(i, 1);
+        basketAmount.splice(i, 1);
+    }
+    renderBasket();
+    saveArrays();
+}
+
+function increaseAmount(i) {
+    basketAmount[i]++;
+    renderBasket();
+    saveArrays();
+}
+
+function saveArrays() {
+    let basketFoodAsText = JSON.stringify(basketFood);
+    let basketPriceAsText = JSON.stringify(basketPrice);
+    let basketAmountAsText = JSON.stringify(basketAmount);
+    localStorage.setItem('basketFood', basketFoodAsText);
+    localStorage.setItem('basketPrice', basketPriceAsText);
+    localStorage.setItem('basketAmount', basketAmountAsText);
+}
+
+
+function loadArrays() {
+    let basketFoodAsText = localStorage.getItem('basketFood');
+    let basketPriceAsText = localStorage.getItem('basketPrice');
+    let basketAmountAsText = localStorage.getItem('basketAmount');
+
+    if (basketFoodAsText && basketPriceAsText && basketAmountAsText) {
+        basketFood = JSON.parse(basketFoodAsText);
+        basketPrice = JSON.parse(basketPriceAsText);
+        basketAmount = JSON.parse(basketAmountAsText);
+    }
+}
+
+
+function foodContentHTML(food) {
+    return /*html*/`
+        <div class="menu-box">
+            <div class="menu-card">
+                <div class="menu-title-head">
+                    <p class="menu-title">${food.item}</p>
+                    <div class="plus" onclick="addToBasktet('${food.amount}', '${food.item}', '${food.price}')">+</div>
+                </div>
+                <ul>
+                    <li>${food.menuContent}</li>
+                </ul>
+                <p class="price">${food.price.toFixed(2).replace('.', ',')} €</p>
+            </div>
+        </div>
+    `
+}
+
+
+function emptyBasketHtml() {
     return /*html*/`
         <div class="empty-basket">
                 <h3>Wähle deine Gerichte</h3>
@@ -110,25 +158,45 @@ function filledBasketHtml(i) {
     let amount = basketAmount[i];
     return /*html*/`
         <div class="basket-menu">
-            <div class="basket-menu-header">
-                <p id="basket-amount">${amount}</p>
-                <p id="basket-item">${item}</p>
-                <div onclick="decreaseAmount()" class="quantity">-</div>
-                <div onclick="increaseAmount()" class="quantity">+</div>
-                <p id="basket-price">${price} €</p>
+            <div class="basket-menu-name"> ${amount}  ${item}</div> 
+            <div class="quantity"> 
+                <img onclick="increaseAmount(${i})" class="since" src="img/plus-rund.png"> 
+                <img onclick="decreaseAmount(${i})" class="since" src="img/minus-rund.png">
             </div>
-
+            <div class="sum" id="basket-price">${price.toFixed(2).replace('.', ',')} €</div>
         </div>
     `
 }
 
 
-function priceSectionHtml( minPrice, sum, finalSum) {
+function priceSectionHtml(minPrice, sum, finalSum) {
     return /*html*/`
         <div id="remove">
-            <div class="">
-
-            </div>    
+        <div class="required-rest-price">
+                <div>Benötigter Betrag, um den Mindestbestellwert zu erreichen <b>${minPrice.toFixed(2).replace('.', ',')} €</b></div>
+                <div></div>
+            </div>
+            <div class="required-info-text">Leider kannst du noch nicht bestellen.
+                Der Mindestbestellwert von 20,00 € ist noch nicht erreicht.
+            </div>
         </div>
-    `
+        <div class="costs">
+            <div class="subtotal">
+                <div>Zwischensumme:</div>
+                <div>${sum.toFixed(2).replace(".", ",")} €</div>
+            </div>
+            <div class="delivery">
+                <div>Lieferkosten:</div>
+                <div>5 €</div>
+            </div>
+            <div class="total">
+                <div>Gesamt:</div>
+                <div>${finalSum.toFixed(2).replace(".", ",")} €</div>
+            </div>
+        </div>
+        <button class="pay-btn">
+            <div>Bezahlen</div>
+            <div><b>${finalSum.toFixed(2).replace(".", ",")} €</b></div>
+        </button>
+    `;
 }
