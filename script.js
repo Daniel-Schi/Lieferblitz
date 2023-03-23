@@ -209,7 +209,7 @@ function basketResponsive(finalSum) {
         <div class="bgr">
             <button onclick="openBasketResponsive()" id="btn-responsive" class="btn-responsive d-none">
                 <div>Bezahlen</div>
-                <div><b>${finalSum.toFixed(2).replace(".", ",")} €</b></div>
+                <div class="endSum"><b>${finalSum.toFixed(2).replace(".", ",")} €</b></div>
             </button>
         </div>
     `;
@@ -217,12 +217,12 @@ function basketResponsive(finalSum) {
 
 
 function openBasketResponsive() {
-    document.getElementById('shoppingcardResponsive').classList.remove('d-none-restaurant');
-    document.getElementById('restaurant-info').classList.add('d-none-restaurant');
+    document.getElementById('shoppingcardResponsive').classList.remove('d-none-responsive');
+    document.getElementById('restaurant-info').classList.add('d-none-responsive');
 }
 
 
 function closeBasketResponsive() {
-    document.getElementById('shoppingcardResponsive').classList.add('d-none-restaurant');
-    document.getElementById('restaurant-info').classList.remove('d-none-restaurant');
+    document.getElementById('shoppingcardResponsive').classList.add('d-none-responsive');
+    document.getElementById('restaurant-info').classList.remove('d-none-responsive');
 }
