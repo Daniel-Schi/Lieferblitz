@@ -29,6 +29,10 @@ html {
     align-items: center;
 }
 
+.headline img {
+    padding-right: 10px;
+}
+
 .main {
     display: flex;
 }
@@ -229,6 +233,10 @@ ul li {
     width: 100%;
 }
 
+.closeBasket {
+    display: none;
+}
+
 .empty-basket {
     display: flex;
     flex-direction: column;
@@ -344,7 +352,7 @@ ul li {
 
 .pay-btn:hover {
     transform: scale(1.1);
-        transition: 225ms;
+    transition: 225ms;
 }
 
 @media (max-width: 1210px) {
@@ -422,10 +430,10 @@ ul li {
     }
 
     .basket-menu {
-       width: 95%;
-       font-size: 24px;
-       margin-bottom: 20px;
-       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        width: 95%;
+        font-size: 24px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .basket-menu-name {
@@ -442,7 +450,7 @@ ul li {
         cursor: pointer;
         display: unset;
         position: absolute;
-        right: 75px;
+        left: 75px;
         top: 40px;
         background-color: rgb(224, 136, 3);
         border: none;
@@ -453,5 +461,71 @@ ul li {
     .closeBasket:hover {
         transform: scale(1.2);
         transition: 225ms;
+    }
+}
+
+@media (max-width: 480px) {
+    .img {
+        display: none;
+    }
+
+    .basket-menu {
+        font-size: 20px;
+    }
+
+    .basket-menu-name {
+        width: 100px;
+    }
+
+    li {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 415px) {
+    .menu-overview {
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+
+    .headline img {
+        display: none;
+    }
+
+    h2 {
+        font-size: 24px !important;
+    }
+
+    .closeBasket {
+        position: absolute;
+        top: 22px;
+        left: 40px;
+        font-size: 18px;
+    }
+
+    .basket-menu {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 315px) {
+    .menu-name img {
+        display: none;
+    }
+
+    .ratings {
+        font-size: 16px;
+    }
+
+    .ratings img {
+        height: 60px;
+    }
+
+    .menu-info-box {
+        font-size: 16px;
+    }
+
+    .menu-overview a {
+        font-size: 18px;
     }
 }
