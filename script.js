@@ -73,6 +73,7 @@ function updateBasketPrice() {
     } else {
         document.getElementById('remove').classList.remove('d-none');
     }
+    basketResponsive(finalSum)
 }
 
 
@@ -91,11 +92,13 @@ function decreaseAmount(i) {
     saveArrays();
 }
 
+
 function increaseAmount(i) {
     basketAmount[i]++;
     renderBasket();
     saveArrays();
 }
+
 
 function saveArrays() {
     let basketFoodAsText = JSON.stringify(basketFood);
@@ -141,16 +144,15 @@ function foodContentHTML(food) {
 function emptyBasketHtml() {
     return /*html*/`
         <div class="empty-basket">
-                <h3>Wähle deine Gerichte</h3>
-                <img class="basket-img" src="img/tasche.png">
-                <span>
-                    Der Warenkorb ist noch leer!</span>
-                <br>
-                <span> Füge leckere Gerichte aus der Speisekarte hinzu und gib deine Bestellung ab.</span>
-
-            </div>
+            <h3>Wähle deine Gerichte</h3>
+            <img class="basket-img" src="img/tasche.png">
+            <span>Der Warenkorb ist noch leer!</span>
+            <br>
+            <span> Füge leckere Gerichte aus der Speisekarte hinzu und gib deine Bestellung ab.</span>
+        </div>
     `;
 }
+
 
 function filledBasketHtml(i) {
     let item = basketFood[i];
@@ -172,9 +174,8 @@ function filledBasketHtml(i) {
 function priceSectionHtml(minPrice, sum, finalSum) {
     return /*html*/`
         <div id="remove">
-        <div class="required-rest-price">
+            <div class="required-rest-price">
                 <div>Benötigter Betrag, um den Mindestbestellwert zu erreichen <b>${minPrice.toFixed(2).replace('.', ',')} €</b></div>
-                <div></div>
             </div>
             <div class="required-info-text">Leider kannst du noch nicht bestellen.
                 Der Mindestbestellwert von 20,00 € ist noch nicht erreicht.
@@ -199,4 +200,29 @@ function priceSectionHtml(minPrice, sum, finalSum) {
             <div><b>${finalSum.toFixed(2).replace(".", ",")} €</b></div>
         </button>
     `;
+}
+
+
+function basketResponsive(finalSum) {
+    let content = document.getElementById('btn-shoppingcard');
+    content.innerHTML = /*html*/`
+        <div class="bgr">
+            <button onclick="openBasketResponsive()" id="btn-responsive" class="btn-responsive d-none">
+                <div>Bezahlen</div>
+                <div><b>${finalSum.toFixed(2).replace(".", ",")} €</b></div>
+            </button>
+        </div>
+    `;
+}
+
+
+function openBasketResponsive() {
+    document.getElementById('shoppingcardResponsive').classList.remove('d-none-restaurant');
+    document.getElementById('restaurant-info').classList.add('d-none-restaurant');
+}
+
+
+function closeBasketResponsive() {
+    document.getElementById('shoppingcardResponsive').classList.add('d-none-restaurant');
+    document.getElementById('restaurant-info').classList.remove('d-none-restaurant');
 }
