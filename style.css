@@ -4,6 +4,7 @@ body {
 
 html {
     scroll-behavior: smooth;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .header {
@@ -348,6 +349,7 @@ ul li {
     margin: 30px 30px;
     cursor: pointer;
     border: none;
+    padding: 5px;
 }
 
 .pay-btn:hover {
